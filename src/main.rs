@@ -14,7 +14,7 @@ async fn main() {
         },
     };
 
-    println!("{} Found repo {}!", "Info: ".yellow(), &repo.name.bold());
+    println!("{} Found repo {}!", "Info: ".yellow().bold(), &repo.name.bold());
     match &repo.description {
         Some(desc) => println!("{} \"{}\"", "Info: ".bold().yellow(), desc),
         None => {},
