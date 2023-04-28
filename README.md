@@ -20,10 +20,16 @@ I wanted to speedrun an app.
  * make
  * the rust toolchain (cargo, rustc, etc.)
 
-## build+install
+## build+install (most people should do this)
 
- 1. add `$HOME/.local/bin` to your `$PATH`.
- 1. Issue `make`.
+`make` or `make all`. This will add `$HOME/.local/bin` to `$PATH` in the current session.
+
+## build and install only
+
+this **wont** add `$HOME/.local/bin` to path:
+
+`make build install`
+
 
 # De-installation
 

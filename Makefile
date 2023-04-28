@@ -1,13 +1,19 @@
-install: build
-	if [ -d "/usr/local/bin/" ]; then \
-	 	cp target/release/ctp_check $(HOME)/.local/bin; \
-	else \
-		mkdir /usr/local/bin; \
-		cp target/release/ctp_check $(HOME)/.local/bin/; \
-	fi
+all: add_localbin_to_path build
+	cp target/release/ctp_check $(HOME)/.local/bin
+
+install:
+	cp target/release/ctp_check $(HOME)/.local/bin
 
 build:
 	cargo build --release
+
+add_localbin_to_path:
+	$(shell if [[ ! -d "$(HOME)/.local/bin/" ]]; then \
+		mkdir $(HOME)/.local/bin; \
+	fi)
+	
+	export PATH="$PATH:$HOME/.local/bin"
+	@echo "$(HOME)/.local/bin was added to the PATH in this session. to make this change global, please do so in you shell's rc."
 
 clean:
 	rm -rvf target/release;
