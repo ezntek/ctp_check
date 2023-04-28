@@ -1,4 +1,5 @@
 all: add_localbin_to_path build
+
 	cp target/release/ctp_check $(HOME)/.local/bin
 
 install:
@@ -12,8 +13,9 @@ add_localbin_to_path:
 		mkdir $(HOME)/.local/bin; \
 	fi)
 	
-	export PATH="$PATH:$HOME/.local/bin"
-	@echo "$(HOME)/.local/bin was added to the PATH in this session. to make this change global, please do so in you shell's rc."
+	$(shell export PATH="$PATH:$HOME/.local/bin")
+	@echo "$(HOME)/.local/bin was added to the PATH in this session."
+	@echo "to make this change global, please do so in you shell's rc."
 
 clean:
 	rm -rvf target/release;
